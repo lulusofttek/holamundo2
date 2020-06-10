@@ -25,11 +25,13 @@ class App extends React.Component{
         return (<div>
             <Regards objectName={this.state}/>
             <button onClick={() => this.changeState({name: 'Pau', 
-            lastName: 'Cano' })
-            }>Pau</button>
+                lastName: 'Cano' })
+                }>Pau
+            </button>
             <button onClick={() => this.changeState({name: 'Fer', 
-            lastName: 'Cano' })
-            }>Fer</button>
+                lastName: 'Cano' })
+                }>Fer
+            </button>
         </div>
         )
     }
