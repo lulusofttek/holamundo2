@@ -1,5 +1,7 @@
 import React from 'react'
-import Regards from './regards'
+import Faker from 'faker'
+import Comments from './comments'
+import Button from './button'
 
 /* Componentes funcionales
 const App = () => {
@@ -12,26 +14,34 @@ class App extends React.Component{
     constructor(){
         super()
         this.state = {
-            name: 'Lulu',
-            lastName: 'Nieto'
+            comments: []
         }
-        this.changeState = this.changeState.bind(this)
     }
 
-    changeState(objectName){
-        this.setState(objectName)
+    addComment(){
+        let comment = {
+            userAvatar: Faker.image.avatar(),
+            name: Faker.name.firstName(),
+            date: Date.now().toLocaleString(),
+            comment :Faker.lorem.paragraph()
+        }
+        this.setState({comments: comment})
     }
+
     render(){
-        return (<div>
-            <Regards objectName={this.state}/>
-            <button onClick={() => this.changeState({name: 'Pau', 
-                lastName: 'Cano' })
-                }>Pau
-            </button>
-            <button onClick={() => this.changeState({name: 'Fer', 
-                lastName: 'Cano' })
-                }>Fer
-            </button>
+        return (
+            <div>
+            <Button/>
+            {
+                this.state.comments.map((comment) => {
+                    return <Comments 
+                        userAvatar={comment.userAvatar}
+                        name={comment.name} 
+                        date={comment.date} 
+                        comment={comment.comment}
+                    />
+                })
+            }          
         </div>
         )
     }
